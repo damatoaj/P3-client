@@ -22,7 +22,8 @@ const Profile = (props) => {
     <div className="container">
       <h1>Welcome to your Playlists</h1>
       <h4>Select one of your playlists to look through your songs.</h4>
-      <Playlist />
+      {/* <Playlist /> */}
+      
     </div>
   );
 }

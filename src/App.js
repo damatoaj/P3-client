@@ -6,6 +6,7 @@ import Header from './components/partials/Header';
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [content, setContent] = useState([])
 
   const [searchQuery, setSearchQuery] = useState('');
   const [content, setContent] = useState([]);
@@ -25,6 +26,7 @@ function App() {
       localStorage.removeItem('jwtToken');
     }
   }
+
 
   return (
     <div className="App">

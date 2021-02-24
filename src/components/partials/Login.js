@@ -37,7 +37,7 @@ const Login = (props) => {
     }).catch(setError);
   }
 
-  if (redirect) return <Redirect to='/profile' />
+  if (redirect) return <Redirect to='/playlists' />
   return (
     <section>
       {error ? <Error error={error} /> : null}

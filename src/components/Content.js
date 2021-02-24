@@ -9,8 +9,8 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
   const token = localStorage.getItem('jwtToken');
   return <Route {...rest} render={(renderProps) => (
     token ?
-    <Component {...rest} {...renderProps} /> :
-    <Redirect to='/auth' />
+      <Component {...rest} {...renderProps} /> :
+      <Redirect to='/auth' />
   )} />
 }
 
@@ -23,18 +23,17 @@ const Content = (props) => {
       <Route path='/auth' render={(renderProps) => (
         <Auth handleAuth={props.handleAuth} {...renderProps} />
       )} />
-      <Route path='/searchresults' 
-      render={(renderProps) => (
-        <SearchResults searchQuery={props.searchQuery} content={props.content} {...renderProps} />
-      )}
-      // component={SearchResults} 
-      // searchQuery={props.searchQuery}
+      <Route path='/searchresults'
+        render={(renderProps) => (
+          <SearchResults searchQuery={props.searchQuery} {...renderProps} content={props.content}/>
+        )}
+
       />
-      <PrivateRoute 
-        path='/profile' 
-        component={Profile} 
-        currentUser={props.currentUser} 
-        handleAuth={props.handleAuth} 
+      <PrivateRoute
+        path='/playlists'
+        component={Profile}
+        currentUser={props.currentUser}
+        handleAuth={props.handleAuth}
       />
     </main>
   );

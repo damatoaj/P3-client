@@ -27,7 +27,7 @@ const Signup = (props) => {
       setRedirect(true);
     }).catch(err => console.log(`⛔️ Rutro:\n`, err));
   }
-  if (redirect) return <Redirect to='/profile' />
+  if (redirect) return <Redirect to='/playlists' />
 
 
   return (

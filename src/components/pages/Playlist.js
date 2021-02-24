@@ -62,14 +62,14 @@ const Playlist = (props) => {
     const view = 'list'; // or 'coverart'
     const theme = 'black'; // or 'white'
 
-    
+
     return (
         <div>
             <h3>Playlist</h3>
             <ul className="playlist-list">
                 <li className="playlist-container">
                     <SpotifyPlayer
-                        uri="spotify:album:1TIUsv8qmYLpBEhvmBmyBk"
+                        uri="spotify:track:3jjBPF4NDMCU51psU8JPpR" 
                         size={size}
                         view={view}
                         theme={theme}
