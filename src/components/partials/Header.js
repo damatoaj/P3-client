@@ -1,13 +1,17 @@
-import { Link } from 'react-router-dom'
-
+import { Link } from 'react-router-dom';
+import { useState } from 'react';
 import axios from 'axios';
 
 const Header = (props) => {
+    const [searchQuery, setSearchQuery] = useState('');
+    const [spotifyToken, setSpotifyToken] = useState('');
+
     const handleSearch = () => {
-        console.log(props.searchQuery)
+        console.log(searchQuery)
+        console.log('THIS IS CONTENT', props.content);
         axios.get(
             `${process.env.REACT_APP_SERVER_URL}/songs`,
-            ({ params: props.searchQuery }))
+            ({ params: searchQuery }))
             .then(response => {
                 console.log('🐸', response);
                 props.setContent(response);
@@ -28,9 +32,9 @@ const Header = (props) => {
             <Link className="nav-link" to='/'>Home</Link>{' | '}
             <Link className="nav-link" to='/playlists'>Playlists</Link>{' | '}
             <span className="search-container">
-                <input type="text" onChange={e => props.setSearchQuery(e.target.value)} placeholder="search for music" />
+                <input type="text" onChange={e => setSearchQuery(e.target.value)} placeholder="search for music" />
                 <Link className="search-btn" onClick={handleSearch} to='/searchresults'>Search</Link>
-            </span>{' | '}           
+            </span>{' | '}
             <span className="nav-link" onClick={e => props.handleAuth(null)}> Logout</span>
         </nav > :
         <nav>
