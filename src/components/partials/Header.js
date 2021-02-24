@@ -4,8 +4,7 @@ import axios from 'axios';
 
 const Header = (props) => {
     // const [redirect, setRedirect] = useState(false);
-
-
+    
     const handleSearch = () => {
         console.log(props.searchQuery)
         axios.get(
@@ -13,6 +12,7 @@ const Header = (props) => {
              ({params:props.searchQuery}))
             .then(response => {
             console.log('🐸', response);
+            props.setContent(response);
         }).catch(err => console.log(`💩 oh pooh, there’s a search error:\n`, err))
     }
     // if (redirect) return <Redirect to='/searchresults' />

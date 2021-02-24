@@ -4,6 +4,7 @@ import Auth from './pages/Auth';
 import Profile from './pages/Profile';
 import SearchResults from './pages/SearchResults';
 
+
 const PrivateRoute = ({ component: Component, ...rest }) => {
   const token = localStorage.getItem('jwtToken');
   return <Route {...rest} render={(renderProps) => (
@@ -14,6 +15,8 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
 }
 
 const Content = (props) => {
+  
+
   return (
     <main>
       <Route exact path='/' component={Home} />
@@ -22,7 +25,7 @@ const Content = (props) => {
       )} />
       <Route path='/searchresults' 
       render={(renderProps) => (
-        <SearchResults searchQuery={props.searchQuery} {...renderProps} />
+        <SearchResults searchQuery={props.searchQuery} content={props.content} {...renderProps} />
       )}
       // component={SearchResults} 
       // searchQuery={props.searchQuery}
