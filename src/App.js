@@ -9,7 +9,7 @@ function App() {
   const [content, setContent] = useState([])
 
   const [searchQuery, setSearchQuery] = useState('');
-  const [content, setContent] = useState([]);
+ 
 
   const handleAuth = user => {
     console.log('Handling Authentication...');
