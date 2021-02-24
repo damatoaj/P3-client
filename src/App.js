@@ -8,6 +8,8 @@ function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [content, setContent] = useState([])
 
+  
+
   const handleAuth = user => {
     console.log('Handling Authentication...');
     if (user) {
@@ -31,13 +33,15 @@ function App() {
       <Header 
         currentUser={currentUser} 
         handleAuth={handleAuth}
+        
         setContent={setContent}
-        content={content}
+        
       />
       <Content 
         currentUser={currentUser}
         isAuthenticated={isAuthenticated}
         handleAuth={handleAuth}
+        
         content={content}
       />
     </div>
