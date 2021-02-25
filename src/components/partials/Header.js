@@ -6,20 +6,19 @@ import Content from '../Content';
 
 const Header = (props) => {
     const [searchQuery, setSearchQuery] = useState('');
-    const [spotifyToken, setSpotifyToken] = useState('')
+    const [spotifyToken, setSpotifyToken] = useState('Arthur')
 
     const handleSearch = () => {
-        
+        let query = spotifyToken ?  {params: {searchQuery, spotifyToken}}  : {params: {searchQuery}} 
         axios.get(
             `${process.env.REACT_APP_SERVER_URL}/songs`,
-            ({ params: searchQuery}))
+            query)
             .then(response => {
                 console.log('🐸', response);
-                
+                setSpotifyToken(response.data.setSpotifyToken)
                 props.setContent(response);
             }).catch(err => console.log(`💩 oh pooh, there’s a search error:\n`, err))
     }
-    
 
     let style = {
         backgroundColor: 'gray',
