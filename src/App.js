@@ -10,7 +10,6 @@ function App() {
   const [content, setContent] = useState([]);
   const [spotifyToken, setSpotifyToken] = useState('');
 
-  
   const fetchToken = () => {
     axios.get(`${process.env.REACT_APP_SERVER_URL}/songs/token`)
     .then(response => {
@@ -18,7 +17,6 @@ function App() {
       setSpotifyToken(response.data)
     })    
   }
-
   const handleAuth = user => {
     console.log('Handling Authentication...');
     if (user) {
@@ -35,9 +33,6 @@ function App() {
       localStorage.removeItem('jwtToken');
     }
   }
-
-
-
   return (
     <div className="App">
       {/* TODO Remove div, add styling more intentionally */}
@@ -48,17 +43,14 @@ function App() {
         spotifyToken={spotifyToken}
         setSpotifyToken={setSpotifyToken}
         setContent={setContent}
-        
       />
       <Content 
         currentUser={currentUser}
         isAuthenticated={isAuthenticated}
         handleAuth={handleAuth}
-        
         content={content}
       />
     </div>
   );
 }
-
 export default App;

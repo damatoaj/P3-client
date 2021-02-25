@@ -1,8 +1,9 @@
 const PlaylistCard = (props) => {
     return (
-        <div className="playlist-card">
-            {props.songList}
-        </div>
+        <li className="playlist-card">
+            This is the playlist card.
+            <button onClick={(e) => props.deletePlaylist}>Delete Playlist</button>
+        </li>
     );
 }
 
