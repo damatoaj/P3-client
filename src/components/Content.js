@@ -16,14 +16,9 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
 }
 
 const Content = (props) => {
-<<<<<<< HEAD
-  
-
-=======
   const [title, setTitle] = useState('');
 
   {console.log('AAAAAAAAAAAAAA',props.content)}
->>>>>>> 5736fb312102abf0364b42e5bddf441fe11f9b4c
   return (
     <main>
       <Route exact path='/' component={Home} />
