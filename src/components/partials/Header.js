@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom'
 import { useState } from 'react';
-import jwtDecode from 'jwt-decode';
 
 import axios from 'axios';
 import Content from '../Content';

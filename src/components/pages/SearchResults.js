@@ -3,13 +3,19 @@ import PlaylistCard from '../partials/PlaylistCard'
 
 const SearchResults = (props) => {
     
-    { console.log('🙏🏼', props.content)}
+     console.log('🙏🏼', props.content)
+     console.log(props.content.data)
+     
     
-    // let songList = props.content.data.song.map((song, i) => (
-    //     <li className="song-list-result">
-    //         <h1 key={i}>{song.name}</h1>
-    //     </li>
-    // ))
+    // let songList = Object.keys(props.content.data.song).length > 0 ?
+    //     props.content.data.song.map((song, i) => (
+    //         <PlaylistCard 
+    //             {...song} 
+    //             key={song.name}
+    //             songId={i}
+    //             />)) :
+    //         <h3>Search for Music</h3>
+
     return (
         <div className="container">
             {/* <h1>THIS IS WHERE YOUR SEARCH RESULTS WILL BE</h1> */}
@@ -19,8 +25,7 @@ const SearchResults = (props) => {
                 <h1>song</h1>
             </div>
             <div>
-                {/* <PlaylistCard songList={songList}/> */}
-
+                {/* {songList} */}
             </div>
         </div>
     );
