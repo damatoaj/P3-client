@@ -1,31 +1,29 @@
-import PlaylistCard from '../partials/PlaylistCard'
+import SongSearch from '../partials/SongSearch'
 
 
 const SearchResults = (props) => {
+
+    { console.log('🙏🏼', props.content.length) }
+    let songList
     
-     console.log('🙏🏼', props.content)
-     console.log(props.content.data)
-     
-    
-    // let songList = Object.keys(props.content.data.song).length > 0 ?
-    //     props.content.data.song.map((song, i) => (
-    //         <PlaylistCard 
-    //             {...song} 
-    //             key={song.name}
-    //             songId={i}
-    //             />)) :
-    //         <h3>Search for Music</h3>
+    if (props.content.length > 0) {
+        songList = props.content.map((song, i) => (
+            <li className="song-list-result">
+                <h4 key={i}>{song.name}</h4>
+            </li>
+        ))
+    } else {
+        <h1>Loading</h1>
+    }
 
     return (
         <div className="container">
             {/* <h1>THIS IS WHERE YOUR SEARCH RESULTS WILL BE</h1> */}
-            <div className="search-results">
+            <div className="inner-container">
                 <h1>THIS IS WHERE YOUR SEARCH RESULTS WILL BE</h1>
-               
-                <h1>song</h1>
-            </div>
-            <div>
-                {/* {songList} */}
+                {/* <li className="song-card">This is the song card.</li> */}
+                {/* <PlaylistCard songList={songList} /> */}
+                <SongSearch songList={songList}/>
             </div>
         </div>
     );

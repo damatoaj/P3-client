@@ -2,54 +2,54 @@ import axios from 'axios';
 import SpotifyPlayer from 'react-spotify-player';
 
 
-// //useEffect
-// const getPlaylists = (e) => {
-//     e.preventDefault();
+//useEffect
+const getPlaylists = (e) => {
+    e.preventDefault();
 
-//     axios.get(`${process.env.REACT_APP_SERVER_URL}/playlist`)
-//     .then(res => {
-//         console.log(res.data)
-//     }).catch(err => (console.log(`ERROR GETTING ALL PLAYLISTS 🤬`, err)));
-// };
+    axios.get(`${process.env.REACT_APP_SERVER_URL}/playlist`)
+    .then(res => {
+        console.log(res.data)
+    }).catch(err => (console.log(`ERROR GETTING ALL PLAYLISTS 🤬`, err)));
+};
 
-// const createPlaylist = (e) => {
-//     e.preventDefault();
+const createPlaylist = (e) => {
+    e.preventDefault();
 
-//     axios.post(
-//         `${process.env.REACT_APP_SERVER_URL}/playlist`,
-//         { title }
-//         ).then(response => {
-//             console.log(response.data)
-//         }).catch(err => console.log(`CREATE PLAYLIST ERROR 🤬`, err));
-// };
+    axios.post(
+        `${process.env.REACT_APP_SERVER_URL}/playlist`,
+        { title }
+        ).then(response => {
+            console.log(response.data)
+        }).catch(err => console.log(`CREATE PLAYLIST ERROR 🤬`, err));
+};
 
-// //useEffect for on load
-// const getPlaylist = (e) => {
-//     e.preventDefault();
+//useEffect for on load
+const getPlaylist = (e) => {
+    e.preventDefault();
 
-//     axios.get(`${process.env.REACT_APP_SERVER_URL}/playlist/:id`)
-//     .then(response => {
-//         console.log(response.data)
-//     }).catch(err => console.log(`ERROR GETTING PLAYLIST 😡`, err))
-// };
+    axios.get(`${process.env.REACT_APP_SERVER_URL}/playlist/:id`)
+    .then(response => {
+        console.log(response.data)
+    }).catch(err => console.log(`ERROR GETTING PLAYLIST 😡`, err))
+};
 
-// const updatePlaylist = (e) => {
-//     e.preventDefault();
+const updatePlaylist = (e) => {
+    e.preventDefault();
 
-//     axios.put(`${process.env.REACT_APP_SERVER_URL}/playlist/:id`, { title, songs })
-//     .then(response => {
-//         console.log(response.data)
-//     }).catch(err => { console.log(`ERROR UPDATING PLAYLIST`, err)})
-// };
+    axios.put(`${process.env.REACT_APP_SERVER_URL}/playlist/:id`, { title, songs })
+    .then(response => {
+        console.log(response.data)
+    }).catch(err => { console.log(`ERROR UPDATING PLAYLIST`, err)})
+};
 
-// const deletePlaylist = (e) => {
-//     e.preventDefault();
+const deletePlaylist = (e) => {
+    e.preventDefault();
 
-//     axios.delete(`${process.env.REACT_APP_SERVER_URL}/playlist/:id`)
-//     .then(response => {
-//         console.log(response.status)
-//     }).catch(err => console.log(`ERROR DELETING PLAYLIST 😤`, err))
-// }
+    axios.delete(`${process.env.REACT_APP_SERVER_URL}/playlist/:id`)
+    .then(response => {
+        console.log(response.status)
+    }).catch(err => console.log(`ERROR DELETING PLAYLIST 😤`, err))
+}
 
 
 const Playlist = (props) => {
@@ -80,4 +80,4 @@ const Playlist = (props) => {
     );
 }
 
-export default Playlist
+export default Playlist;

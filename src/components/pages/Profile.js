@@ -1,7 +1,8 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Redirect } from 'react-router-dom';
-import Playlist from './Playlist'
+import PlaylistCard from '../partials/PlaylistCard';
+
 
 const Profile = (props) => {
   const [message, setMessage] = useState('Loading msg...');
@@ -22,8 +23,9 @@ const Profile = (props) => {
     <div className="container">
       <h1>Welcome to your Playlists</h1>
       <h4>Select one of your playlists to look through your songs.</h4>
-      {/* <Playlist /> */}
-      
+      <div className="inner-container">
+        <PlaylistCard />
+      </div>
     </div>
   );
 }

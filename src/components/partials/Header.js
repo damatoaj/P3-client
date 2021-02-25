@@ -1,13 +1,10 @@
 import { Link } from 'react-router-dom'
 import { useState } from 'react';
-
 import axios from 'axios';
 import Content from '../Content';
-
 const Header = (props) => {
     const [searchQuery, setSearchQuery] = useState('');
     console.log(props.spotifyToken)
-
     const handleSearch = () => {
         console.log('Inside the function', props.spotifyToken)
         if(!props.spotifyToken) {
@@ -20,11 +17,10 @@ const Header = (props) => {
             `${process.env.REACT_APP_SERVER_URL}/songs`,
             query)
             .then(response => {
-                console.log('🐸', response.data);
-                props.setContent(response);
-            }).catch(err => console.log(`💩 oh pooh, there’s a search error:\n`, err))
+                props.setContent(response.data.song);
+                console.log('🐸', response.data.song);
+            }).catch(err => console.log(`💩 oh pooh, there's a search error:\n`, err))
     }
-
     let style = {
         backgroundColor: 'gray',
         borderBottom: ' 3px solid black',
@@ -32,8 +28,6 @@ const Header = (props) => {
         margin: 0,
         padding: '1em 0'
     }
-
-
     let conditionalLinks = props.currentUser ?
         <nav>
             <Link className="nav-link" to='/'>Home</Link>{' | '}
@@ -48,7 +42,6 @@ const Header = (props) => {
             <Link className="nav-link" to='/'>Home</Link>{' | '}
             <Link className="nav-link" to='/auth'>Login or Signup to Search for Music!</Link>
         </nav>
-
     return (
         <header style={style}>
             <h2> Its a website!</h2>
@@ -56,5 +49,4 @@ const Header = (props) => {
         </header>
     );
 }
-
 export default Header

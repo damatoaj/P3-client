@@ -1,8 +1,8 @@
 const PlaylistCard = (props) => {
     return (
-        <div className="playlist-card">
-            {props.songList}
-        </div>
+        <li className="playlist-card">
+            This is the playlist card.
+        </li>
     );
 }
 
