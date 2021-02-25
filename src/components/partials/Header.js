@@ -1,21 +1,27 @@
 import { Link } from 'react-router-dom'
 import { useState } from 'react';
+import jwtDecode from 'jwt-decode';
 
 import axios from 'axios';
 import Content from '../Content';
 
 const Header = (props) => {
     const [searchQuery, setSearchQuery] = useState('');
-    const [spotifyToken, setSpotifyToken] = useState('Arthur')
+    console.log(props.spotifyToken)
 
     const handleSearch = () => {
-        let query = spotifyToken ?  {params: {searchQuery, spotifyToken}}  : {params: {searchQuery}} 
+        console.log('Inside the function', props.spotifyToken)
+        if(!props.spotifyToken) {
+            console.log('no token friend')
+            props.fetchToken();
+        }
+        let token = props.spotifyToken
+        let query = {params: {searchQuery, token}}
         axios.get(
             `${process.env.REACT_APP_SERVER_URL}/songs`,
             query)
             .then(response => {
-                console.log('🐸', response);
-                setSpotifyToken(response.data.setSpotifyToken)
+                console.log('🐸', response.data);
                 props.setContent(response);
             }).catch(err => console.log(`💩 oh pooh, there’s a search error:\n`, err))
     }
