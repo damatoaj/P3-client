@@ -1,5 +1,6 @@
 import axios from 'axios';
 import SpotifyPlayer from 'react-spotify-player';
+import { useEffect,  useState } from 'react';
 
 
 //useEffect
@@ -53,6 +54,8 @@ const deletePlaylist = (e) => {
 
 
 const Playlist = (props) => {
+
+    
 
     // size may also be a plain string using the presets 'large' or 'compact'
     const size = {
