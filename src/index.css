@@ -10,7 +10,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: linear-gradient(to bottom right, rgb(57, 64, 105), rgb(167, 104, 104));
+  background-image: linear-gradient(rgb(238, 158, 158),rgb(46, 62, 148), rgb(138, 23, 23) );
   font-family: Marker Felt, fantasy;
 }
 
@@ -94,6 +94,7 @@ code {
 .team {
   display: flex;
   border: 7px solid black;
+  border-radius:10px;
   height: auto;
   margin-top: 10vh;
   flex-direction: column;

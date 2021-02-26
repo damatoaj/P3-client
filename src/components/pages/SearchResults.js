@@ -41,7 +41,7 @@ const SearchResults = (props) => {
         <div className="container">
             {/* <h1>THIS IS WHERE YOUR SEARCH RESULTS WILL BE</h1> */}
             <div className="inner-container">
-                <h1>THIS IS WHERE YOUR SEARCH RESULTS WILL BE</h1>
+                <h1>THIS IS WHAT WE COULD FIND</h1>
                 {/* <li className="song-card">This is the song card.</li> */}
                 {/* <PlaylistCard songList={songList} /> */}
                 <SongSearch songList={songList} />
