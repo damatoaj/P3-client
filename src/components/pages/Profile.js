@@ -20,11 +20,12 @@ const Profile = (props) => {
       console.log(response.data)
     }).catch(err => console.log(`CREATE PLAYLIST ERROR 🤬`, err));
     
-    axios.get(`${process.env.REACT_APP_SERVER_URL}/playlist`)
-      .then(res => {
-          console.log(res.data, '🥶')
-          setPlaylist(res.data)
-      }).catch(err => (console.log(`ERROR GETTING ALL PLAYLISTS 🤬`, err)));
+    // axios.get(`${process.env.REACT_APP_SERVER_URL}/playlist`)
+    //   .then(res => {
+    //       console.log(res.data, '🥶')
+    //       setPlaylist(res.data)
+    //       console.log(res.data, '$$$$$')
+    //   }).catch(err => (console.log(`ERROR GETTING ALL PLAYLISTS 🤬`, err)));
   };
 
 
@@ -39,12 +40,14 @@ const Profile = (props) => {
       })
   }, []);
 
-    // useEffect(() => {
-    //   axios.get(`${process.env.REACT_APP_SERVER_URL}/playlist`)
-    //   .then(res => {
-    //       setPlaylist(res.data)
-    //   }).catch(err => (console.log(`ERROR GETTING ALL PLAYLISTS 🤬`, err)));
-    // })
+    useEffect(() => {
+      axios.get(`${process.env.REACT_APP_SERVER_URL}/playlist`)
+      .then(res => {
+        console.log(res.data, '🥶')
+          setPlaylist(res.data)
+          console.log(res.data, '$$$$$')
+      }).catch(err => (console.log(`ERROR GETTING ALL PLAYLISTS 🤬`, err)));
+    }, []);
 
   // //useEffect for on load
   const getPlaylist = (e) => {
@@ -56,26 +59,32 @@ const Profile = (props) => {
   };
 
 
-  const deletePlaylist = (e) => {
-    e.preventDefault();
-    axios.delete(`${process.env.REACT_APP_SERVER_URL}/playlist/:id`)
+  const deletePlaylist = (id) => {
+    // console.log(e)
+    console.log(id)
+    // e.preventDefault();
+    axios.delete(`${process.env.REACT_APP_SERVER_URL}/playlist/${id}`)
       .then(response => {
         console.log(response.status)
       }).catch(err => console.log(`ERROR DELETING PLAYLIST 😤`, err))
   }
-  console.log(playlist.length, '😤')
-  console.log(playlist.playlists.length, 'fuck you')
+  console.log(playlist)
+  console.log(playlist.playlists)
+
+  // console.log(playlist.playlists.length, 'fuck you')
 
 
-  if (playlist.playlists.length > 0) {
-    playlistList = playlist.playlists.map((pl, i) => ( 
+  if (!playlist.playlists) {
+    <h4>Make a new playlist</h4>
+  } else { 
+      playlistList = playlist.playlists.map((pl, i) => ( 
         <li className="playlist-card">
             This is the playlist card.
-            <h4 key={i}>{pl.title}</h4>
-            <button onClick={(e) => deletePlaylist}>Delete Playlist</button>
+            <h4 key={i}>{pl.title}</h4> 
+            <button onClick={(e) => deletePlaylist(pl._id)}>Delete Playlist</button>
         </li>
     ))
-} 
+}
 
   if (!props.currentUser) return <Redirect to='/auth' />
   return (
