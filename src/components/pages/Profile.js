@@ -2,8 +2,6 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import PlaylistCard from '../partials/PlaylistCard';
-
-
 const Profile = (props) => {
   let playlist = props.playlist;
   let setPlaylist = props.setPlaylist;
@@ -11,7 +9,6 @@ const Profile = (props) => {
   let title = props.title;
 
   const [message, setMessage] = useState('Loading msg...');
-
   const createPlaylist = (e) => {
     e.preventDefault();
     axios.post(
@@ -26,9 +23,13 @@ const Profile = (props) => {
         }).catch(err => (console.log(`ERROR GETTING ALL PLAYLISTS 🤬`, err)))
       console.log(response.data)
     }).catch(err => console.log(`CREATE PLAYLIST ERROR 🤬`, err));
+    // axios.get(`${process.env.REACT_APP_SERVER_URL}/playlist`)
+    //   .then(res => {
+    //       console.log(res.data, '🥶')
+    //       setPlaylist(res.data)
+    //       console.log(res.data, '$$$$$')
+    //   }).catch(err => (console.log(`ERROR GETTING ALL PLAYLISTS 🤬`, err)));
   };
-
-
   useEffect(() => {
     axios.get(`${process.env.REACT_APP_SERVER_URL}/api/private`)
       .then(response => {
@@ -49,7 +50,6 @@ const Profile = (props) => {
           console.log(res.data, '$$$$$')
       }).catch(err => (console.log(`ERROR GETTING ALL PLAYLISTS 🤬`, err)));
     }, []);
-
   // //useEffect for on load
   const getPlaylist = (e) => {
     e.preventDefault();
@@ -95,7 +95,6 @@ const Profile = (props) => {
         </li>
     ))
 }
-
   if (!props.currentUser) return <Redirect to='/auth' />
   return (
     <div className="container">
@@ -104,12 +103,11 @@ const Profile = (props) => {
       <form onSubmit={createPlaylist}>
         <div className="form-elem">
           <label htmlFor="title">Playlist Title</label>
-          <input type="text" name="title" placeholder="Title of your Playlist" onChange={e => props.setTitle(e.target.value)} />
+          <input type="text" className="input-bar" name="title" placeholder="Title of your Playlist" onChange={e => props.setTitle(e.target.value)} />
           <input type="submit" value="Create Playlist" />
         </div>
       </form>
       {/* <div className="inner-container">
-
       </div> */}
         <PlaylistCard
           playlistList={playlistList}
@@ -117,5 +115,4 @@ const Profile = (props) => {
     </div>
   );
 }
-
 export default Profile;

@@ -46,6 +46,7 @@ const SearchResults = (props) => {
                 {/* <PlaylistCard songList={songList} /> */}
                 <SongSearch songList={songList} />
             </div>
+            {/* <SongSearch songList={songList} /> */}
         </div>
     );
 }

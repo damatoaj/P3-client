@@ -10,7 +10,45 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: rgb(207, 204, 204);
+  background-image: linear-gradient(to bottom right, rgb(57, 64, 105), rgb(167, 104, 104));
+  font-family: Marker Felt, fantasy;
+}
+
+.input-bar {
+  border-radius: 5px;
+  border: 2px solid black;
+}
+
+.header{
+  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcE1-7V1n0m19uyCnHWuwVNuGs2UV9DAL0Pg&usqp=CAU");
+  display: flex;
+  flex-direction: column;
+  border-bottom:  3px solid black;
+  color: black;
+  margin: 0;
+  padding: 1em 0;
+  font-family: Marker Felt, fantasy
+}
+
+.site-title {
+  display: flex;
+  background-color: rgb(247, 241, 235);
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 5px;
+  border: 3px solid black;
+}
+
+.nav-link-bar {
+  display: flex;
+  background-color: white;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 5px;
+  padding: 4px;
+  bordeR: 3px solid black;
 }
 
 code {
@@ -29,25 +67,65 @@ code {
   border-bottom: 1px solid rgb(184, 212, 221);
   cursor: pointer;
 }
-
+.search-btn {
+  background-color: whitesmoke;
+  border: 2px solid black;
+  text-decoration: none;
+  color: black;
+  border-radius: 5px;
+  margin-left: 5px;
+  padding: 1.5px;
+}
 .container {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border: 1px solid black;
+  border: 4px solid black;
+  border-radius: 20px;
   min-width: 30em;
   margin-top: 10vh;
   margin-left: 10em;
   margin-right: 10em;
   margin-bottom: 10vh;
-  background-color:aliceblue;
+  background-color:rgb(232, 236, 230);
   box-shadow: 5px 10px 10px  rgb(78, 77, 77);
 }
 
 .team {
+  display: flex;
   border: 7px solid black;
-  height: 50vh;
-  margin-top: 100vh;
+  height: auto;
+  margin-top: 10vh;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.dev-team {
+  font-family:'Courier New', Courier, monospace
+}
+
+.team-container{
+  display: flex;
+  /* border: 7px solid black; */
+  height: auto;
+  margin-top: 5vh;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-bottom: 5vh;
+}
+
+.team-container h2 {
+  text-decoration: underline;
+}
+
+
+img {
+  height: 210px;
+  width: 190px;
+  border-radius: 15px;
+  border: 3px solid black;
+  margin-bottom: 5vh;
+  margin-top: 0
 }
 
 .playlist-list {
@@ -100,4 +178,8 @@ code {
   box-shadow: 3px 3px 10px rgb(90, 90, 90);
   margin-top: 3vh;
   margin-bottom: 5vh;
+}
+
+li {
+  list-style: none;
 }

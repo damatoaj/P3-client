@@ -22,5 +22,4 @@ const SongSearch = (props) => {
         </div>
     );
 }
-
 export default SongSearch;

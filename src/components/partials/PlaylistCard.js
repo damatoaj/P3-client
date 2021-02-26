@@ -17,7 +17,6 @@ const PlaylistCard = (props) => {
     // console.log('😤', playlistList)
     return (
         <div>
-            
             {props.playlistList}
         </div>
 

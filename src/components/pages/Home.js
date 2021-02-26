@@ -9,6 +9,7 @@ const Home = (props) => {
             <h1>Home page</h1>
             <Intro />
             <div className="team">
+            <h1 className="dev-team">The Development Team</h1>
                 <Team />
             </div>
         </div>
