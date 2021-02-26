@@ -5,7 +5,8 @@ import PlaylistCard from '../partials/PlaylistCard';
 
 
 const Profile = (props) => {
-  const [playlist, setPlaylist] = useState([])
+  let playlist = props.playlist;
+  let setPlaylist = props.setPlaylist;
   let playlistList;
   let title = props.title;
 

@@ -17,6 +17,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
 
 const Content = (props) => {
   const [title, setTitle] = useState('');
+  const [playlist, setPlaylist] = useState([])
 
   {console.log('AAAAAAAAAAAAAA',props.content)}
   return (
@@ -27,13 +28,16 @@ const Content = (props) => {
       )} />
       <Route path='/searchresults'
         render={(renderProps) => (
-          <SearchResults  {...renderProps} content={props.content}/>
+          <SearchResults  {...renderProps} content={props.content} playlist={playlist}/>
         )}
 
       />
       <PrivateRoute
         path='/playlists'
+        
         component={Profile}
+        playlist={playlist}
+        setPlaylist={setPlaylist}
         currentUser={props.currentUser}
         handleAuth={props.handleAuth}
         setTitle={setTitle}

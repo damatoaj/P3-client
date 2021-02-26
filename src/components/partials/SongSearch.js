@@ -17,7 +17,9 @@ const SongSearch = (props) => {
 
 
     return (
+        <div>
             <li>{props.songList}</li>
+        </div>
     );
 }
 

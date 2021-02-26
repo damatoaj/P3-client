@@ -2,16 +2,24 @@ import SongSearch from '../partials/SongSearch'
 
 
 const SearchResults = (props) => {
-
+console.log(props.playlist.playlists, '#####')
     { console.log('🙏🏼', props.content.length) }
     let songList;
 
-
+  
 
     if (props.content.length > 0) {
         songList = props.content.map((song, i) => (
             <li className="song-card">
+                <form>
+                    <select>
+                    {props.playlist.playlists.map((p, i) => {
+                        return <option key={i} value={p.title}>{p.title}</option>
+                    })};
+                    </select>
+                </form>
                 <h4 key={i}>{song.name}</h4>
+                <button type="submit">Add to your playlist</button >
             </li>
         ))
     } else {

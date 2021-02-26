@@ -1,4 +1,5 @@
 const PlaylistCard = (props) => {
+    console.log(props, '!!!!!!!!!!!!')
     // let playlistList;
 
     // console.log(props.playlists, ')
@@ -16,6 +17,7 @@ const PlaylistCard = (props) => {
     // console.log('😤', playlistList)
     return (
         <div>
+            
             {props.playlistList}
         </div>
 
