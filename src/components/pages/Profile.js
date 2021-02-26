@@ -5,6 +5,7 @@ import PlaylistCard from '../partials/PlaylistCard';
 
 
 const Profile = (props) => {
+  const [playlist, setPlaylist] = useState([])
 
   let title = props.title
 
@@ -18,6 +19,12 @@ const Profile = (props) => {
     ).then(response => {
       console.log(response.data)
     }).catch(err => console.log(`CREATE PLAYLIST ERROR 🤬`, err));
+    
+    axios.get(`${process.env.REACT_APP_SERVER_URL}/playlist`)
+      .then(res => {
+          console.log(res.data, '🥶')
+          setPlaylist(res.data)
+      }).catch(err => (console.log(`ERROR GETTING ALL PLAYLISTS 🤬`, err)));
   };
 
 
@@ -32,32 +39,21 @@ const Profile = (props) => {
       })
   }, []);
 
+    // useEffect(() => {
+    //   axios.get(`${process.env.REACT_APP_SERVER_URL}/playlist`)
+    //   .then(res => {
+    //       setPlaylist(res.data)
+    //   }).catch(err => (console.log(`ERROR GETTING ALL PLAYLISTS 🤬`, err)));
+    // })
 
-  //   //useEffect
-  // const getPlaylists = (e) => {
-  //   e.preventDefault();
-  //   axios.get(`${process.env.REACT_APP_SERVER_URL}/playlist`)
-  //   .then(res => {
-  //       console.log(res.data)
-  //   }).catch(err => (console.log(`ERROR GETTING ALL PLAYLISTS 🤬`, err)));
-  // };
-  // const createPlaylist = (e) => {
-  //   e.preventDefault();
-  //   axios.post(
-  //     `${process.env.REACT_APP_SERVER_URL}/playlist`,
-  //     { title }
-  //   ).then(response => {
-  //     console.log(response.data)
-  //   }).catch(err => console.log(`CREATE PLAYLIST ERROR 🤬`, err));
-  // };
   // //useEffect for on load
-  // const getPlaylist = (e) => {
-  //   e.preventDefault();
-  //   axios.get(`${process.env.REACT_APP_SERVER_URL}/playlist/:id`)
-  //   .then(response => {
-  //       console.log(response.data)
-  //   }).catch(err => console.log(`ERROR GETTING PLAYLIST 😡`, err))
-  // };
+  const getPlaylist = (e) => {
+    e.preventDefault();
+    axios.get(`${process.env.REACT_APP_SERVER_URL}/playlist/:id`)
+    .then(response => {
+        console.log(response.data)
+    }).catch(err => console.log(`ERROR GETTING PLAYLIST 😡`, err))
+  };
 
 
   const deletePlaylist = (e) => {
@@ -84,6 +80,8 @@ const Profile = (props) => {
       </form>
       <div className="inner-container">
         <PlaylistCard
+          playlists={playlist}
+          getPlaylist={getPlaylist}
           deletePlaylist={deletePlaylist} />
       </div>
     </div>
