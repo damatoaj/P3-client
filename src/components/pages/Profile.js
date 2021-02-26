@@ -66,7 +66,6 @@ const Profile = (props) => {
     // e.preventDefault();
     axios.delete(`${process.env.REACT_APP_SERVER_URL}/playlist/${id}`)
       .then(response => {
-
         axios.get(`${process.env.REACT_APP_SERVER_URL}/playlist`)
         .then(res => {
           console.log(res.data, '🥶')

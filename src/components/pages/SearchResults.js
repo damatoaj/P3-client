@@ -1,25 +1,36 @@
-import SongSearch from '../partials/SongSearch'
+import SongSearch from '../partials/SongSearch';
+import axios from 'axios';
+import { useState } from 'react';
 
 
 const SearchResults = (props) => {
-console.log(props.playlist.playlists, '#####')
-    { console.log('🙏🏼', props.content.length) }
+    const [playlist, setPlaylist] = useState('')
     let songList;
 
+    const addSongPL = (song, playlist) => {
+        console.log(song)
+        axios.post(
+          `${process.env.REACT_APP_SERVER_URL}/songs`,
+          { playlist:playlist, name:song.name, uri:song.uri, spotify_id:song.id}
+        ).then(response => {
+          console.log(response.data)
+        }).catch(err => console.log(`UPDATE PLAYLIST ERROR 🤬`, err));
+      };
   
 
     if (props.content.length > 0) {
         songList = props.content.map((song, i) => (
             <li className="song-card">
                 <form>
-                    <select>
+                    <select onChange={e => setPlaylist(e.target.value)}>
                     {props.playlist.playlists.map((p, i) => {
-                        return <option key={i} value={p.title}>{p.title}</option>
+                        // console.log(p._id)
+                        return <option key={i} value={p._id}>{p.title}</option>
                     })};
                     </select>
                 </form>
                 <h4 key={i}>{song.name}</h4>
-                <button type="submit">Add to your playlist</button >
+                <button type="submit" onClick={() => addSongPL(song, playlist)}>Add to your playlist</button >
             </li>
         ))
     } else {
