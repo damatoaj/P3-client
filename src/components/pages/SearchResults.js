@@ -4,7 +4,7 @@ import SongSearch from '../partials/SongSearch'
 const SearchResults = (props) => {
 
     { console.log('🙏🏼', props.content.length) }
-    let songList
+    let songList;
 
 
 

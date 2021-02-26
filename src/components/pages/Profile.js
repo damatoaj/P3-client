@@ -6,8 +6,8 @@ import PlaylistCard from '../partials/PlaylistCard';
 
 const Profile = (props) => {
   const [playlist, setPlaylist] = useState([])
-
-  let title = props.title
+  let playlistList;
+  let title = props.title;
 
   const [message, setMessage] = useState('Loading msg...');
 
@@ -63,8 +63,19 @@ const Profile = (props) => {
         console.log(response.status)
       }).catch(err => console.log(`ERROR DELETING PLAYLIST 😤`, err))
   }
+  console.log(playlist.length, '😤')
+  console.log(playlist.playlists.length, 'fuck you')
 
 
+  if (playlist.playlists.length > 0) {
+    playlistList = playlist.playlists.map((pl, i) => ( 
+        <li className="playlist-card">
+            This is the playlist card.
+            <h4 key={i}>{pl.title}</h4>
+            <button onClick={(e) => deletePlaylist}>Delete Playlist</button>
+        </li>
+    ))
+} 
 
   if (!props.currentUser) return <Redirect to='/auth' />
   return (
@@ -78,12 +89,12 @@ const Profile = (props) => {
           <input type="submit" value="Create Playlist" />
         </div>
       </form>
-      <div className="inner-container">
+      {/* <div className="inner-container">
+
+      </div> */}
         <PlaylistCard
-          playlists={playlist}
-          getPlaylist={getPlaylist}
-          deletePlaylist={deletePlaylist} />
-      </div>
+          playlistList={playlistList}
+        />
     </div>
   );
 }
